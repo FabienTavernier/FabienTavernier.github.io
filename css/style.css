@@ -1,0 +1,198 @@
+/* FONTS */
+/* alumni-sans-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Alumni Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/alumni-sans-v18-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* LAYOUT */
+body {
+  background: #2f2d2e;
+  color: #666;
+  font-family: 'Alumni Sans', sans-serif;
+  font-size: 21px;
+  height: 100vh;
+  line-height: 1;
+  overflow: hidden;
+}
+
+header {  
+  align-items: center;
+  display: flex;
+  justify-content: flex-start;
+  height: 100vh;
+}
+
+.header-content {
+  margin: 0 0 20vh 10vw;
+}
+
+h1, h2 {
+  font-weight: 400;
+}
+
+h1 {
+  color: #999;
+  font-size: 144px;
+}
+
+h2 {
+  font-size: 68px;
+  margin-left: 5px;
+}
+
+h2 span {
+  color: #fab;
+}
+
+p {
+  margin-left: 8px;
+}
+
+span {
+  color: #b0b;
+}
+
+/* RESPONSIVE */
+
+@media screen and (max-width: 375px) {
+  h1 {
+    font-size: 110px;
+  }
+  
+  h2 {
+    font-size: 55px;
+    margin-left: 3px;
+  }
+
+  p {
+    margin-left: 5px;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .header-content {
+    margin-left: 15vw;
+  }
+
+  h1 {
+    font-size: 178px;
+  }
+  
+  h2 {
+    font-size: 89px;
+    margin-left: 6px;
+  }
+
+  p {
+    margin-left: 11px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  h1 {
+    font-size: 322px;
+  }
+  
+  h2 {
+    font-size: 144px;
+    margin-left: 11px;
+  }
+
+  p {
+    margin-left: 18px;
+  }
+}
+
+/* ANIMATIONS */
+/* https://css-tricks.com/snippets/css/typewriter-effect/ */
+.typewriter h2 {
+  font-family: monospace;
+  border-right: 4px solid #fb0; /* The typwriter cursor */
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  max-width: 0;
+
+  /*
+    animation-duration: 2.5s, .5s;
+    animation-timing-function: steps(9, end), step-end;
+    animation-delay: 2s, 0;
+    animation-iteration-count: 1, infinite;
+    animation-fill-mode: forwards, none;
+    animation-name: typing, blink-caret;
+  */  
+  animation: 
+    2.5s steps(9, end) 2s forwards typing,
+    .5s step-end infinite blink-caret;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0; max-width: 100%; }
+  to { width: 100%; max-width: 100%; }
+}
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #fb0 }
+}
+
+/* https://animista.net/play/attention/blink */
+.typewriter p {
+  animation: 0.6s 6s forwards blink;
+  opacity: 0;
+}
+/* The text blinking effect */
+@keyframes blink {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+
+main {
+  align-items: center;
+  background: #fb0;
+  color: #2f2d2e;
+  display: flex;
+  font-size: 110px;
+  height: 100vh;
+  justify-content: center;
+  position: absolute;
+  top: 100vh;
+  transition: top .8s cubic-bezier(.47,1.64,.41,.8);
+  width: 100vw;
+}
+
+.scroll {
+  display: none;
+}
+.scroll + label {
+  bottom: 0;
+  position: fixed;
+  width: 100vw;
+  z-index: 10;
+}
+.scroll + label img {
+  margin: 0 auto;
+  rotate: 0deg;
+  transition: rotate .3s linear;
+  width: 48px;
+}
+.scroll:checked + label img {
+  rotate: 180deg;
+}
+.scroll:checked ~ main {
+  top: 0;
+}
+
+
+
